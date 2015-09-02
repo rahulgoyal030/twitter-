@@ -6,7 +6,7 @@ $(document).ready(function  () {
 		var username = $("#username1").val();
 		 console.log(username + " hello  ");
 
-    $.get("getuser.php", function(data, status){
+    $.get("#", function(data, status){   // change the name of the file 
          console.log(data);
           var value= JSON.parse(data) ;
 

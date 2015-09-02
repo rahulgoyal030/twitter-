@@ -1,9 +1,15 @@
 var express = require('express');
 var url = require('url');
 var bodyParser = require('body-parser');
+var mongodb = require('mongodb');
 
-var index=  require("./routes/index");   
+
+// all the routes  js files  
+var index = require("./routes/index");   
 var login = require("./routes/login");
+var signup = require("./routes/signup");
+
+
 var app= express();
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,6 +22,8 @@ app.set('view engine','ejs');
 
 app.use('/',index);
 app.use('/login',login);
+
+app.use('/signup',signup);
 
 
 app.listen(3000);
