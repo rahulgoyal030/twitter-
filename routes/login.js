@@ -30,11 +30,14 @@ router.post('/', function  (req,res) {
 			 if(result.length>0)
 			 {
 			 	 console.log("username exist ");
+			 	 
+			 	 res.render('home' , { "username" : username  });
 
 			 }
 			 else{
 
 			 	console.log(" username not exist");
+			 	res.send(" try another username");
 			 }
 
 		})

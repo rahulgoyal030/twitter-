@@ -50,7 +50,8 @@ router.post('/', function  (req,res) {
 						console.log(err);
 					}
 					console.log(" data inserted ");
-			    
+			        
+			        res.render('index');
 			    });
 
         	}
@@ -63,7 +64,7 @@ router.post('/', function  (req,res) {
 
 	});
 	
-	res.send("okk");
+	
 });
 
 module.exports= router;

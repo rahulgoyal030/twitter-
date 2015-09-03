@@ -21,7 +21,8 @@ app.set('view engine','ejs');
 
 
 app.use('/',index);
-app.use('/login',login);
+
+app.use('/home',login);  // it is calling login check script
 
 app.use('/signup',signup);
 
