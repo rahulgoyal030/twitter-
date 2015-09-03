@@ -31,21 +31,39 @@ router.post('/', function  (req,res) {
 
 		var collection = db.collection('users');
 
-		collection.insert(data , function ( err, result){
+        collection.find({"username" : username}).toArray(function(err , result){
 
-				if(err)
-				{
-					console.log(err);
-				}
-				console.log(" data inserted ");
-		})
+        	if(err)
+        	{
+        		 console.log(err);
+        	}
+        	else if(result.length>0)
+        	{
+        		console.log(" username already exist change it");
+        	}
+        	else
+        	{
+        		collection.insert(data , function ( err, result){
+
+					if(err)
+					{
+						console.log(err);
+					}
+					console.log(" data inserted ");
+			    
+			    });
+
+        	}
+
+        });
+		
 
 		//db.close();
 
 
-	})
+	});
 	
 	res.send("okk");
-})
+});
 
 module.exports= router;
