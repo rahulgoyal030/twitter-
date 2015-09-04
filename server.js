@@ -8,7 +8,7 @@ var mongodb = require('mongodb');
 var index = require("./routes/index");   
 var login = require("./routes/login");
 var signup = require("./routes/signup");
-
+var peopleknow = require("./routes/peopleknow");
 
 var app= express();
 app.use(bodyParser.json()); // for parsing application/json
@@ -25,6 +25,8 @@ app.use('/',index);
 app.use('/home',login);  // it is calling login check script
 
 app.use('/signup',signup);
+
+app.use('/peopleknow',peopleknow);
 
 
 app.listen(3000);
