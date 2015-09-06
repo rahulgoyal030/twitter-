@@ -2,13 +2,14 @@ var express = require('express');
 var url = require('url');
 var bodyParser = require('body-parser');
 var mongodb = require('mongodb');
+var request = require('request');
 
 
 // all the routes  js files  
 var index = require("./routes/index");   
 var login = require("./routes/login");
 var signup = require("./routes/signup");
-var peopleknow = require("./routes/peopleknow");
+var peopleknow = require("./routes/peopleUknow");
 
 var app= express();
 app.use(bodyParser.json()); // for parsing application/json
