@@ -8,7 +8,12 @@ body{
 	color:  blue;
 }
 
-.people button{
+.people [type=button]{
 	color: blue;
 
+}
+
+.myButton{
+
+	border:  3px solid blue;
 }
