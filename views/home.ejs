@@ -8,6 +8,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> ></script>
     <script type="text/javascript" src="js/peopleknow.js"></script>
     <link rel="stylesheet" type="text/css" href="css/homepage.css">
+    <script type="text/javascript"  src="/js/tweet.js"></script>
 
     
        
@@ -18,11 +19,11 @@
   <div class="bodyArea">
 
     <div id="username">
-      <%= username %>
+      <p id="myName"><%=username%></p>
     </div> 
 
     <div id="tweetBox" >
-       <textarea rows="3" cols="50" name="tweet" id="tweet" placeholder="whats on your mind "></textarea>
+       <textarea rows="3" cols="50" name="tweet" id="tweetValue" placeholder="whats on your mind "></textarea>
        <button id="tweetButton"  >tweet</button>
 
     </div> 

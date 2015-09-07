@@ -22,6 +22,7 @@ router.post('/', function  (req,res) {
 		var username = req.body.username;		
 		var password = 	req.body.password;	
 
+		//console.log(" length of username " , username.length);
 
 		var collection = db.collection('users');
 
@@ -29,9 +30,9 @@ router.post('/', function  (req,res) {
 
 			 if(result.length>0)
 			 {
-			 	 console.log("username exist ");
+			 	 console.log("username exist " , username.length);
 			 	 
-			 	 res.render('home' , { "username" : username  });
+			 	 res.render('home' , { "username" : username });
 
 			 }
 			 else{
