@@ -13,10 +13,10 @@ $(document).ready(function  () {
     		{
     			console.log(data[x].username);
 
-    			var person= '<p >' +  data[x].username + "</p>";
-    			var followButton ='<button type="button"  class="myButton"   value ="' + data[x].username  + ' ">follow </button>';
+    			var person= '<p>'+ data[x].username+"</p>";
+    			var followButton ='<button type="button"  class="myButton"   value ="' + data[x].username  + '">follow </button>';
     			
-
+    			//console.log(person.length);
     			$("#peopleList").append(person);
 
     			$("#peopleList").append(followButton);    // correcting this for right value
@@ -29,22 +29,20 @@ $(document).ready(function  () {
     });
 
 
-    // $(".people p").click(function(e){
-
-    // 	e.preventDefault();
-           
-    // 	 console.log(" IN THIS  code")
-    // 	 var value=  $(this).html();
-    // 	 console.log(" button value is "  , value);
-    // });
-
     $("#peopleList").on('click', ".myButton", function(){
 
-    	console.log(" in the event");
-    	console.log($(this).val());
+    	console.log(" in the event  value of tweet button  ");
+    	
+    	var follow = $(this).val();
+    	console.log(follow, follow.length);
+    	
+    	$.post("/followThem",{ "person" : follow } , function(data , status ){
 
-    })
+    			console.log(data);
+    	})
+
+    });
 
    
     
-})
+});

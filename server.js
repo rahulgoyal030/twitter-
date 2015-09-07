@@ -12,6 +12,7 @@ var login = require("./routes/login");
 var signup = require("./routes/signup");
 var peopleknow = require("./routes/peopleUknow");
 var tweet = require("./routes/tweetSave");
+var followThem = require("./routes/followThem");
 
 var app= express();
 app.use(bodyParser.json()); // for parsing application/json
@@ -23,16 +24,17 @@ app.set('view engine','ejs');
 
 
 
-app.use('/',index);
+app.use('/',index);     // first page open
 
 app.use('/home',login);  // it is calling login check script
 
-app.use('/signup',signup);
+app.use('/signup',signup);  // for new user enrty 
 
-app.use('/peopleknow',peopleknow);
+app.use('/peopleknow',peopleknow);   // this will show list of people who u may want to follow
 
-app.use('/tweet', tweet);
+app.use('/tweet', tweet);     //  it is   saving tweet to db
 
+app.use('/followThem', followThem);
 
 app.listen(3000);
 console.log("server on ");

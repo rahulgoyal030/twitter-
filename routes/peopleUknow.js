@@ -34,18 +34,13 @@ router.get('/', function  (req,res) {
  				console.log(err);
  			}
 
- 			console.log(result);
+ 			// console.log(result);
 
  			//res.contentType('json');
   			//res.render('/js/peopleknow.js', {name : result });
 
   			res.writeHead(200, { 'Content-Type': 'application/json' }); 
       		res.end(JSON.stringify(result));
-
-
- 		
-
-
 
  		})
 

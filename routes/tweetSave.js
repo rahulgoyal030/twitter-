@@ -40,7 +40,7 @@ router.post('/', function  (req,res) {
 					console.log(" data inserted ");
 			        
 			      //  res.writeHead(200, { 'Content-Type': 'application/json' }); 
-      				res.end(JSON.stringify("okk"));
+      				res.end(JSON.stringify("tweet is saved"));
 			       
 			 });
 
