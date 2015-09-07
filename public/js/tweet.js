@@ -16,7 +16,7 @@ $(document).ready(function  () {
         				{ "tweet" : tweetvalue , "username" : username } ,
         				function( data , status){
 
-
+        					console.log(data);
 
         	});
 

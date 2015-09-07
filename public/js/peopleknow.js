@@ -29,19 +29,22 @@ $(document).ready(function  () {
     });
 
 
-    $(".people p").click(function(e){
+    // $(".people p").click(function(e){
 
-    	e.preventDefault();
+    // 	e.preventDefault();
            
-    	 console.log(" IN THIS  code")
-    	 var value=  $(this).html();
-    	 console.log(" button value is "  , value);
-    });
+    // 	 console.log(" IN THIS  code")
+    // 	 var value=  $(this).html();
+    // 	 console.log(" button value is "  , value);
+    // });
 
-    $(".myButton").click(function(){
+    $("#peopleList").on('click', ".myButton", function(){
 
-    	console.log(" it is responding");
+    	console.log(" in the event");
+    	console.log($(this).val());
+
     })
 
+   
     
 })
