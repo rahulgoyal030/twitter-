@@ -3,8 +3,8 @@ var mongodb= require('mongodb');
 var request = require('request')
 
 var router = express.Router();
-
-router.get('/', function  (req,res) {
+							
+router.post('/', function  (req,res) {
 
 	console.log(req.url);
 
@@ -17,6 +17,8 @@ router.get('/', function  (req,res) {
  //   		 console.log(body) // Print the google web page.
  // 		 }
 	// 	})
+	
+	
 
 	MongoClient.connect(url , function (err, db){
  		
@@ -25,9 +27,28 @@ router.get('/', function  (req,res) {
  			console.log(err);
  		}
 
+ 		var username = req.body.username;
+		console.log(username);
+    
+    	var tableName = username+ "_following";   // table to check whom he already follow
+    
+ 		var collectionCheck = db.collection(tableName);
+
+ 		var usersList = " ";
+ 		       
+ 		      var value  = collectionCheck.find({}).toArray();   //  check this function for appropriate result
+ 		   
+ 		  
+  			    
+			
+  			   // var value = myCursor.toArray();
+  			   console.log(value);
+ 		
+        
+
  		var collection = db.collection('users');
 
- 		collection.find().limit(3).toArray( function(err , result){
+ 		collection.find().limit(5).toArray( function(err , result){
 
  			if(err)
  			{

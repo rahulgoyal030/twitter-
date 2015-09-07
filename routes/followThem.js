@@ -18,10 +18,14 @@ router.post('/', function  (req,res) {
 		 }
 
 		 var personName = req.body.person;
-		 var tableName = personName+ "_following";
+
+		 var account = req.body.username;    // active user account username
+		 var tableName = account+ "_following";
 		 console.log(tableName);
 		 
 		 var collection = db.collection(tableName);
+         
+         
 
 		 var data = { "username" : personName };
 		 

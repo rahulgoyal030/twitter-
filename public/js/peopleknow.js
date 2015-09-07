@@ -5,7 +5,9 @@ $(document).ready(function  () {
 
 
 	console.log("hello");
-    $.get("/peopleknow", function(data , status){
+	var username = $("#myName").text(); 
+
+    $.post("/peopleknow",{"username" : username } ,function(data , status){
 
     		//var result = JSON.parse(data);
 
@@ -36,7 +38,9 @@ $(document).ready(function  () {
     	var follow = $(this).val();
     	console.log(follow, follow.length);
     	
-    	$.post("/followThem",{ "person" : follow } , function(data , status ){
+    	var username = $("#myName").text();
+
+    	$.post("/followThem",{ "person" : follow , "username" : username } , function(data , status ){
 
     			console.log(data);
     	})
