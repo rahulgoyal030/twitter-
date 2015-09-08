@@ -13,6 +13,7 @@ var signup = require("./routes/signup");
 var peopleknow = require("./routes/peopleUknow");
 var tweet = require("./routes/tweetSave");
 var followThem = require("./routes/followThem");
+var timeline = require("./routes/timeline");
 
 var app= express();
 app.use(bodyParser.json()); // for parsing application/json
@@ -34,7 +35,9 @@ app.use('/peopleknow',peopleknow);   // this will show list of people who u may 
 
 app.use('/tweet', tweet);     //  it is   saving tweet to db
 
-app.use('/followThem', followThem);
+app.use('/followThem', followThem);   // load the followers list to db
+
+app.use('/timeline' , timeline);
 
 app.listen(3000);
 console.log("server on ");
