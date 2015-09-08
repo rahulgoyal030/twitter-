@@ -2,7 +2,7 @@ var express = require('express');
 var mongodb = require('mongodb');
 
 var router = express.Router();
-
+var listTweets = [];
 router.get('/' , function  (req, res) {
 	  
 	  console.log(" query " , req.query);
@@ -27,24 +27,37 @@ router.get('/' , function  (req, res) {
 	  			var abc = [];
 	  			console.log(tweetTable);
 	  		
-	  			 var cursor = collection.find({}, { tweet : 1});         // result me answer aa rha hai
+	  			 // var cursor = collection.find({}, { tweet : 1});         // result me answer aa rha hai
 
-	  			 var docs = cursor.toArray();
+	  			 // var docs = cursor.toArray();
 
 	  			 
-	  			 {
-	  			 	  console.log(docs ," ds" );
-	  			 }
+	  			 // {
+	  			 // 	  console.log(docs ," ds" );
+	  			 // }
 
 	  				// abc.push.apply(abc, result);
 
 	  				// console.log(docs[3] + " d ");
+
+	  				 
 	  			
 	  				 collection.find({}, { tweet : 1}).toArray(function(err , result){
-	  				 	console.log(" result  " , result);
+	  				 	
+	  				 	//console.log(" result  " , result);
+	  				 	 listTweets.push.apply(listTweets , result);
+
+	  				 	 console.log(" a "  , listTweets );
+
+
+
 	  				 })
 
+	  				 console.log(" b "  , listTweets );
+
 	  });
+
+	  console.log(" c " , listTweets);
 });
 
 
