@@ -87,7 +87,7 @@ router.get('/' , function  (req, res) {
 
 	  				 	   
 
-	  				 			 console.log(" final result " , listTweets , name);
+	  				 			// console.log(" final result " , listTweets , name);
 	  				});
 
 

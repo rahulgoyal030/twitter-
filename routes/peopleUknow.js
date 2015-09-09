@@ -34,21 +34,29 @@ router.post('/', function  (req,res) {
     
  		var collectionCheck = db.collection(tableName);
 
- 		var usersList = " ";
+ 		var usersList = [];
  		       
- 		      var value  = collectionCheck.find({}).toArray();   //  check this function for appropriate result
+ 		      collectionCheck.find().toArray(function(err, result){
+
+ 		      	    // usersList.push.apply(usersList , result);
+ 		      	     //console.log( " usersList " ,usersList);
+
+ 		      	     for(x in result){
+ 		      	     	   usersList.push(result[x].username);
+ 		      	     	   console.log( " usersList " ,usersList);	
+ 		      	     }
+
+ 		      });   
  		   
  		  
   			    
 			
-  			   // var value = myCursor.toArray();
-  			   console.log(value);
- 		
+  			   
         
 
  		var collection = db.collection('users');
 
- 		collection.find().limit(5).toArray( function(err , result){
+ 		collection.find({"username" : {$ne : usersList}}).limit(5).toArray( function(err , result){
 
  			if(err)
  			{
