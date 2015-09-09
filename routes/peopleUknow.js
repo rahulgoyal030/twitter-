@@ -43,37 +43,34 @@ router.post('/', function  (req,res) {
 
  		      	     for(x in result){
  		      	     	   usersList.push(result[x].username);
- 		      	     	   console.log( " usersList " ,usersList);	
+ 		      	     	 //  console.log( " usersList " ,usersList);	
  		      	     }
+
+ 		      	     var collection = db.collection('users');
+ 					 collection.find({"username" : { $nin : usersList }}).limit(5).toArray( function(err , result){
+
+ 						if(err)
+ 							{
+ 								console.log(err);
+ 							}
+
+ 								// console.log(result);
+
+ 								//res.contentType('json');
+  								//res.render('/js/peopleknow.js', {name : result });
+
+  						console.log( " in tha  table" , result , usersList);
+
+  						res.writeHead(200, { 'Content-Type': 'application/json' }); 
+      					res.end(JSON.stringify(result));
+
+ 					});
 
  		      });   
  		   
- 		  
-  			    
-			
-  			   
-        
 
- 		var collection = db.collection('users');
 
- 		collection.find({"username" : {$ne : usersList}}).limit(5).toArray( function(err , result){
-
- 			if(err)
- 			{
- 				console.log(err);
- 			}
-
- 			// console.log(result);
-
- 			//res.contentType('json');
-  			//res.render('/js/peopleknow.js', {name : result });
-
-  			res.writeHead(200, { 'Content-Type': 'application/json' }); 
-      		res.end(JSON.stringify(result));
-
- 		})
-
-	})
+	});
 	
 })
 
