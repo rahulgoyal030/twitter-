@@ -42,7 +42,7 @@ router.get('/' , function  (req, res) {
 
 	  				 
 	  			
-	  				 collection.find({}, { tweet : 1}).toArray(function(err , result){
+	  				 collection.find({}, { tweet : 1}).limit(5).sort({ _id : -1 }).toArray(function(err , result){
 	  				 	
 	  				 	//console.log(" result  " , result);
 	  				 	 listTweets.push.apply(listTweets , result);
@@ -59,7 +59,7 @@ router.get('/' , function  (req, res) {
 	  				 var collection1 = db.collection(followerTable);        // list of following people table
 
 	  				collection1.find({}).toArray(function(err,result){
-
+	  					console.log(result);
 	  				 for(x in result)
 	  				 {
 
@@ -73,7 +73,7 @@ router.get('/' , function  (req, res) {
 	  					
 	  					var collection2 = db.collection(tweetTable1);
 
-	  					collection2.find().toArray(function(err, result){
+	  					collection2.find().limit(5).sort({ _id : -1}).toArray(function(err, result){
 
 	  						listTweets.push.apply(listTweets , result);
 
@@ -87,7 +87,7 @@ router.get('/' , function  (req, res) {
 
 	  				 	   
 
-	  				 			// console.log(" final result " , listTweets , name);
+	  				 			console.log(" final result " , listTweets , name);
 	  				});
 
 

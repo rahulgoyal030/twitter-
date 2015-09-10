@@ -15,8 +15,8 @@ $(document).ready(function  () {
     		{
     			console.log(data[x].username);
 
-    			var person= '<p>'+ data[x].username+"</p>";
-    			var followButton ='<button type="button"  class="myButton"   value ="' + data[x].username  + '">follow </button>';
+    			var person= '<label>'+ data[x].username+"</label><br>";
+    			var followButton ='<button type="button"  class="myButton"   value ="' + data[x].username  + '">follow </button><br>';
     			
     			//console.log(person.length);
     			$("#peopleList").append(person);

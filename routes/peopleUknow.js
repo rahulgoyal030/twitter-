@@ -47,7 +47,7 @@ router.post('/', function  (req,res) {
  		      	     }
 
  		      	     var collection = db.collection('users');
- 					 collection.find({"username" : { $nin : usersList }}).limit(5).toArray( function(err , result){
+ 					 collection.find({"username" : { $nin : usersList }}).limit(3).toArray( function(err , result){
 
  						if(err)
  							{
