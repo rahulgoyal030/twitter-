@@ -2,7 +2,7 @@ var express = require('express');
 var mongodb = require('mongodb');
 
 var router = express.Router();
-var listTweets = [];
+
 router.get('/' , function  (req, res) {
 	  
 	  console.log(" query " , req.query);
@@ -11,7 +11,7 @@ router.get('/' , function  (req, res) {
 	  var MongoClient = mongodb.MongoClient;
 	  var url ='mongodb://localhost:27017/twitter+';
 
-	  
+	  var listTweets = []; 
 
 	  MongoClient.connect( url , function( err, db){
 
@@ -25,33 +25,22 @@ router.get('/' , function  (req, res) {
 
 	  			var collection = db.collection(tweetTable);
 	  			var abc = [];
-	  			//console.log(tweetTable);
-	  		
-	  			 // var cursor = collection.find({}, { tweet : 1});         // result me answer aa rha hai
-
-	  			 // var docs = cursor.toArray();    		// was trying to implement cursor
-
-	  			 
-	  			 // {
-	  			 // 	  console.log(docs ," ds" );
-	  			 // }
-
-	  				// abc.push.apply(abc, result);
-
-	  				// console.log(docs[3] + " d ");
-
-	  				 
 	  			
-	  				 collection.find({}, { tweet : 1}).limit(5).sort({ _id : -1 }).toArray(function(err , result){
+
+	  				
+	  			
+	  				 collection.find({}).limit(5).sort({ _id : -1 }).toArray(function(err , result){
 	  				 	
 	  				 	//console.log(" result  " , result);
-	  				 	 listTweets.push.apply(listTweets , result);
+	  				 	 listTweets.push.apply(listTweets , result, function(){
+	  				 	 	  console.log(" a "  , listTweets );
+	  				 	 });
 
-	  				 	// console.log(" a "  , listTweets );
+	  				 	// 
 
 
 
-	  				 });
+	  				  });
 
 	  				 var followingPeople = [];
 	  				 var followerTable = username + "_following"; 
@@ -60,6 +49,7 @@ router.get('/' , function  (req, res) {
 
 	  				collection1.find({}).toArray(function(err,result){
 	  					console.log(result);
+	  					var length = result.length;
 	  				 for(x in result)
 	  				 {
 
@@ -69,33 +59,49 @@ router.get('/' , function  (req, res) {
 
 	  					var tweetTable1 = result[x].username + "_tweets";       // list of alll followingPeople tweets
 
-	  					//console.log(tweetTable1);
+	  					console.log(tweetTable1);
 	  					
 	  					var collection2 = db.collection(tweetTable1);
 
+	  					 var count = 1;
 	  					collection2.find().limit(5).sort({ _id : -1}).toArray(function(err, result){
 
 	  						listTweets.push.apply(listTweets , result);
 
-	  				 	 	//console.log(" followin peope tweets "  ); 
+	  						count++;
 
+	  						if(count==length)
+	  						{
+	  							console.log(" now u can send ");
+	  							res.end(JSON.stringify(listTweets));
+	  						}
+
+	  				 	 	//console.log(" followin peope tweets ", listTweets  ); 
+	  				 	 	
+	  				 	 	//
 	  					});
 
-	  					//console.log(listTweets);
+	  					//console.log(x , " " , length);
+	  					//console.log(listTweets);,
+	  					
 	  				 }	
 	  				 	   
 
-	  				 	   
+	  				   
 
-	  				 			console.log(" final result " , listTweets , name);
+	  				 		//	console.log(" final result " , listTweets , name);   working fine
+
+	  				 		
 	  				});
 
-
+	  				 
 	  				 
 
-	  				 
+	  				    
 
 	  });
+
+
 
 
 });
