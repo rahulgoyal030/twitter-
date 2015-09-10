@@ -17,8 +17,23 @@ $(document).ready( function  () {
   						return 0;
 				});
 
+				// for(x in value)
+				// console.log(value[x].tweet);
+
 				for(x in value)
-				console.log(value[x].tweet);
+				{
+
+					console.log(value[x].tweet);
+					var name = "<label  class='tweetUsername' >" + value[x].username + "</label><br>";
+					var tweet= "<label>" + value[x].tweet + "</label><br><br>";
+					
+					$("#news").append(name);
+					$("#news").append(tweet);
+
+				}
+
+
+
 
 	});
 });

@@ -34,7 +34,7 @@ router.post('/', function  (req,res) {
 
 		  var collection = db.collection(tableName);
 
-		  var data = { 'tweet' : req.body.tweet , 'tweetTime' : tweetTime , 'time' : milliSec };
+		  var data = { 'username' : username, 'tweet' : req.body.tweet , 'tweetTime' : tweetTime , 'time' : milliSec };
 		  console.log(data);
 		  var data
 		 	collection.insert( data , function ( err, result){

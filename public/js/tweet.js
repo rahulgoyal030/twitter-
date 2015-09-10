@@ -17,6 +17,9 @@ $(document).ready(function  () {
         				function( data , status){
 
         					console.log(data);
+        					$("#tweetValue").val("");
+
+
 
         	});
 

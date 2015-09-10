@@ -33,7 +33,7 @@ router.get('/' , function  (req, res) {
 	  				 	
 	  				 	//console.log(" result  " , result);
 	  				 	 listTweets.push.apply(listTweets , result, function(){
-	  				 	 	  console.log(" a "  , listTweets );
+	  				 	 	  console.log("a"  , listTweets );
 	  				 	 });
 
 	  				 	// 
